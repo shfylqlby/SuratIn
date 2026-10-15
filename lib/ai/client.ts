@@ -125,7 +125,8 @@ async function requestOnce(cfg: AiConfig, input: { system: string; user: string;
     });
     if (!res.ok) {
       const Err = res.status === 429 || res.status >= 500 ? AiRetryableError : AiUnavailableError;
-      throw new Err(`AI membalas HTTP ${res.status}`);
+      const detail = (await res.text().catch(() => "")).replace(/\s+/g, " ").slice(0, 200);
+      throw new Err(`AI membalas HTTP ${res.status} (model ${cfg.model}): ${detail}`);
     }
     const raw = await res.text();
     const text = (res.headers.get("content-type") ?? "").includes("text/event-stream") || raw.trimStart().startsWith("data:")
@@ -135,7 +136,11 @@ async function requestOnce(cfg: AiConfig, input: { system: string; user: string;
     return text;
   } catch (e) {
     if (e instanceof AiUnavailableError) throw e;
-    throw new AiRetryableError(e instanceof Error && e.name === "AbortError" ? "AI tidak membalas tepat waktu" : "AI tidak dapat dihubungi");
+    throw new AiRetryableError(
+      e instanceof Error && e.name === "AbortError"
+        ? `AI tidak membalas dalam ${cfg.timeoutMs} ms`
+        : `AI tidak dapat dihubungi: ${e instanceof Error ? (e.cause instanceof Error ? e.cause.message : e.message) : String(e)}`,
+    );
   } finally {
     clearTimeout(timer);
   }

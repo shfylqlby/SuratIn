@@ -113,7 +113,9 @@ export async function checkDocumentImage(image: Uint8Array, mime: string, expect
     const reply = parseReply(raw);
     if (!reply) return { status: "gagal_diperiksa" as AiStatus, result: { message: "Balasan pemeriksaan otomatis tidak terbaca." } as AiResult };
     return mapReply(reply, expected);
-  } catch {
+  } catch (e) {
+    // Alasan teknis hanya ke log server (tanpa kunci/gambar), agar kegagalan di produksi bisa didiagnosis.
+    console.error("[ai] cek dokumen gagal:", e instanceof Error ? e.message : String(e));
     return { status: "gagal_diperiksa" as AiStatus, result: { message: "Pemeriksaan otomatis sedang tidak tersedia." } as AiResult };
   }
 }
