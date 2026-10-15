@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/*
+  SuratIn — token desain
+  tinta  : biru-teal gelap, warna kerja utama (teks tegas, tombol sekunder, kop)
+  map    : kuning map arsip kantor kelurahan, aksen hangat untuk aksi utama saja
+  kertas : latar abu hangat; lembar (putih) untuk kartu/kertas
+  stempel: biru stempel, hanya untuk motif keaslian (stempel, cap, lencana ASLI)
+*/
+@theme {
+  --color-tinta-950: #0a242b;
+  --color-tinta-900: #0f2f37;
+  --color-tinta-800: #123b45;
+  --color-tinta-700: #1b4d59;
+  --color-tinta-600: #2a6371;
+  --color-tinta-100: #dce8ea;
+  --color-tinta-50: #eef4f5;
+
+  --color-map-500: #e9a23b;
+  --color-map-400: #f0b65c;
+  --color-map-600: #c9821c;
+  --color-map-100: #fbefd9;
+
+  --color-kertas: #f1f0eb;
+  --color-lembar: #ffffff;
+  --color-garis: #d9d6cc;
+  --color-garis-halus: #e7e5de;
+
+  --color-teks: #1b1f22;
+  --color-redup: #585e64;
+
+  --color-stempel: #1e3a8a;
+  --color-stempel-50: #e9edf8;
+
+  --color-terbit: #1d6f48;
+  --color-terbit-50: #e3f1e8;
+  --color-proses: #8a5d00;
+  --color-proses-50: #fbf0d6;
+  --color-tolak: #a8261d;
+  --color-tolak-50: #fbe7e4;
+
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-surat: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-kartu: 10px;
+  --radius-tombol: 8px;
+
+  --animate-cap: cap 520ms cubic-bezier(0.2, 0.9, 0.25, 1.15) both;
+  --animate-muncul: muncul 260ms ease-out both;
+
+  @keyframes cap {
+    0% {
+      opacity: 0;
+      transform: scale(1.9) rotate(-26deg);
+    }
+    60% {
+      opacity: 0.9;
+      transform: scale(0.94) rotate(-12deg);
+    }
+    100% {
+      opacity: 0.88;
+      transform: scale(1) rotate(-14deg);
+    }
+  }
+  @keyframes muncul {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-kertas);
+    color: var(--color-teks);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-map-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* seleksi teks: biru pekat + teks putih, terbaca di latar terang maupun gelap */
+  ::selection {
+    background: #1d4ed8;
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* garis bergaya kop surat: tebal + tipis */
+  .garis-kop {
+    border-top: 2.5px solid currentColor;
+    position: relative;
+  }
+  .garis-kop::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 3px;
+    border-top: 1px solid currentColor;
+  }
+  .angka {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
