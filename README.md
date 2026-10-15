@@ -7,7 +7,7 @@ layanan lewat dashboard.
 
 > Dibuat untuk **Hackathon IT Comp 2026, IT Fest Politeknik Negeri Samarinda**.
 
-- **Demo:** `[URL demo, diisi setelah deploy]`
+- **Demo:** `https://surat-in.vercel.app/`
 - **Akun demo:** lihat bagian [Akun demo](#akun-demo). Semua kata sandi `Demo1234!`
 
 ---
@@ -152,25 +152,6 @@ Perintah lain:
 | `npm run test:security` | Menjalankan uji keamanan dan isolasi data antarperan |
 | `npm run build` | Build produksi |
 
-### Variabel lingkungan
-
-| Nama | Keterangan |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | URL proyek Supabase |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Anon key (publik, dibatasi RLS) |
-| `SUPABASE_SERVICE_ROLE_KEY` | Hanya di server |
-| `NEXT_PUBLIC_APP_URL` | Domain aplikasi, dipakai pada QR dan tautan verifikasi di PDF |
-| `NEXT_PUBLIC_DEMO_MODE` | `true` untuk menampilkan daftar akun demo di halaman masuk |
-| `SUPABASE_DB_URL` | Hanya untuk skrip data demo dari komputer lokal |
-| `AI_ENABLED`, `AI_BASE_URL`, `AI_API_KEY`, `AI_MODEL`, `AI_TIMEOUT_MS`, `AI_MAX_CHECKS_PER_HOUR` | Opsional, hanya di server. Tanpa kunci, pemeriksaan foto otomatis nonaktif dan aplikasi tetap berjalan |
-
-## Deploy
-
-1. Terapkan migrasi ke Supabase: `npx supabase db push --db-url "$SUPABASE_DB_URL"`.
-2. Di Supabase, buka **Authentication → URL Configuration** dan isi *Site URL* dengan domain Vercel.
-3. Impor repositori ini di Vercel (preset Next.js), isi variabel lingkungan di atas, lalu deploy.
-4. Dari komputer lokal, isi data demo dengan `NEXT_PUBLIC_APP_URL` berisi domain Vercel agar QR di PDF menuju situs
-   produksi: `npm run reset:demo && npm run seed:demo`.
 
 ## Akun demo
 
@@ -228,8 +209,7 @@ ketik nomornya di halaman Cek keaslian.
 
 | Nama | Peran |
 |---|---|
-| `[Nama anggota]` | `[Peran]` |
-| `[Nama anggota]` | `[Peran]` |
-| `[Nama anggota]` | `[Peran]` |
+| `Muchamad Shofiyul Qalby` | `Full Stack` |
+| `Danis Audric Mahadana` | `Ide Konsep` |
 
-Nama tim: `[Nama tim]`
+Nama tim: `BURJO DAMAR KENAPA KAMU TUTUP, AKU JADI GABISA LAPRAK`
