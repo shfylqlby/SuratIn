@@ -163,7 +163,7 @@ export async function ReviewScreen({
           ) : null}
 
           {actionable ? (
-            <Card className="lg:sticky lg:top-4">
+            <Card>
               <CardHeader>
                 <h2 className="font-semibold text-teks">Keputusan</h2>
               </CardHeader>
