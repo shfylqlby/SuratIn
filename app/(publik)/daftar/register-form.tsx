@@ -55,7 +55,8 @@ export function RegisterForm({ kelurahan, rtUnits }: { kelurahan: KelurahanOptio
   }
 
   return (
-    <form action={action} className="space-y-5" noValidate>
+    // React 19 me-reset form setelah action; batalkan agar pilihan kelurahan/RT dan isian tidak hilang saat ada galat.
+    <form action={action} onReset={(e) => e.preventDefault()} className="space-y-5" noValidate>
       {state.error ? <Notice tone="galat">{state.error}</Notice> : null}
 
       <div className="rounded-[var(--radius-kartu)] border border-garis bg-lembar shadow-sm">
