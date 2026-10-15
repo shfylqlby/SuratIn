@@ -15,8 +15,9 @@ export default async function BerandaPage() {
   return (
     <>
       {/* Hero */}
-      <section className="overflow-hidden border-b border-garis">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+      {/* Isi satu layar penuh (dikurangi tinggi header 4rem) supaya bagian berikutnya baru tampak setelah scroll. */}
+      <section className="flex min-h-[calc(100svh-4rem)] items-center overflow-hidden border-b border-garis">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <div className="max-w-xl">
             <h1 className="text-[2.35rem] leading-[1.05] font-extrabold text-tinta-900 sm:text-5xl lg:text-[3.6rem]">
               Urus surat tanpa antre di kelurahan
