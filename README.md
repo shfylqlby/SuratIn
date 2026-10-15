@@ -152,6 +152,13 @@ Perintah lain:
 | `npm run test:security` | Menjalankan uji keamanan dan isolasi data antarperan |
 | `npm run build` | Build produksi |
 
+## Deploy
+
+1. Terapkan migrasi ke Supabase: `npx supabase db push --db-url "$SUPABASE_DB_URL"`.
+2. Di Supabase, buka **Authentication → URL Configuration** dan isi *Site URL* dengan domain Vercel.
+3. Impor repositori ini di Vercel (preset Next.js), isi variabel lingkungan di atas, lalu deploy.
+4. Dari komputer lokal, isi data demo dengan `NEXT_PUBLIC_APP_URL` berisi domain Vercel agar QR di PDF menuju situs
+   produksi: `npm run reset:demo && npm run seed:demo`.
 
 ## Akun demo
 
