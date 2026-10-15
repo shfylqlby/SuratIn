@@ -143,8 +143,8 @@ export function RegisterForm({ kelurahan, rtUnits }: { kelurahan: KelurahanOptio
           </Field>
         </Bagian>
 
-        <Bagian no={3} judul="Akun" keterangan="Kabar status surat dikirim ke email ini.">
-          <Field id="email" label="Email" required hint="Dipakai untuk masuk." error={fe.email}>
+        <Bagian no={3} judul="Akun" keterangan="Dipakai untuk masuk ke SuratIn.">
+          <Field id="email" label="Email" required hint="Pakai email yang aktif." error={fe.email}>
             <Input
               id="email"
               name="email"
